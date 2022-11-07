@@ -18,14 +18,14 @@ architecture rtl of contatore is
     
 begin
     proc_name: process(clk)
-    variable current: unsigned(n-1 downto 0);
+    variable current: unsigned(n-1 downto 0) := (others => '0');
     begin
         if rising_edge(clk) then
             if rst = '1' then
                 current := (others => '0');
             elsif set = '1' then
                 current := unsigned(set_value);
-            elsif unsigned(cnt_max) = current then
+            elsif (unsigned(cnt_max) - 1 = current) then
                 tc <= '1';
                 current := (others => '0');
             else 
