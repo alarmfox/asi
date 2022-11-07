@@ -49,7 +49,7 @@ begin
 
     clock: process
     begin
-        for i in 0 to 99
+        for i in 0 to 49
         loop
             tb_ck <= '1';
             wait for clk_period/2;
