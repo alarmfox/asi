@@ -32,8 +32,8 @@ begin
                 tc <= '0';
                 current := current +1;
             end if;
-        count <= std_logic_vector(current);
-    end if;
+            count <= std_logic_vector(current);
+        end if;
    end process proc_name;
     
 end architecture rtl;
