@@ -20,7 +20,7 @@ architecture test of cont_tb is
 
     signal tb_in, tb_count, tb_set_value: std_logic_vector(5 downto 0) := (others => '0');
     signal tb_set, tb_ck, tb_rst, tb_tc: std_logic := '0';
-    constant clk_period: time := 10 ns;
+    constant clk_period: time := 5 ns;
 begin
     dut: contatore
     generic map(n => 6)
@@ -40,16 +40,16 @@ begin
         tb_rst <= '1';
         wait for 20 ns;
         tb_rst <= '0';
-        wait for 20 ns;
+        wait for clk_period * 2;
         assert (tb_count = "000010") report "expected 2" severity failure;
-        wait for 50 ns;
+        wait for clk_period * 5;
         assert (tb_count = "000111") report "expected 7" severity failure;
         wait;
     end process ns_counter;
 
     clock: process
     begin
-        for i in 0 to 49
+        for i in 0 to 99
         loop
             tb_ck <= '1';
             wait for clk_period/2;
