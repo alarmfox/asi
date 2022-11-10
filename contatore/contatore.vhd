@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity contatore is
     generic (
-        n: positive
+        n: positive := 8
     );
     port (
         cnt_max, set_value: in std_logic_vector(n-1 downto 0);
